@@ -14,5 +14,23 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('inicio');
+})->name('inicio');
+
+
+
+Route::get('listado', function () {
+    
+    return view('posts.listado');
+})->name('posts_listado');
+
+
+
+Route::get('ficha/{id}', function ($id=0) {
+   return view('posts.ficha', compact('id'));
+ 
+})->where('id', "[0-9]+")->name('posts_ficha');
+
+
+
+
