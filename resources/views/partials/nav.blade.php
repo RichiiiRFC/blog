@@ -11,7 +11,19 @@
           <a class="nav-link" href="{{ route('inicio') }}">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('posts_listado') }}">Listado de posts</a>
+          <a class="nav-link" href="{{ route('posts.index') }}">Listado de posts</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('posts.create') }}">Crear Post</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('posts.edit', '1') }}">Modificar Post</a>
+        </li>
+
+         <li class="nav-item">
+          <a class="nav-link" href="{{ route('posts.show', '2') }}">Ficha</a>
         </li>
     
       </ul>

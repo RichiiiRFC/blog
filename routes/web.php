@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,17 +20,11 @@ Route::get('/', function () {
 
 
 
-Route::get('listado', function () {
-    
-    return view('posts.listado');
-})->name('posts_listado');
 
 
 
-Route::get('ficha/{id}', function ($id=0) {
-   return view('posts.ficha', compact('id'));
- 
-})->where('id', "[0-9]+")->name('posts_ficha');
+
+Route::resource('posts', PostController::class)->only(['index', 'show', 'create', 'edit']);
 
 
 
