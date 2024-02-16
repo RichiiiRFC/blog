@@ -22,9 +22,6 @@
           <a class="nav-link" href="{{ route('posts.edit', '1') }}">Modificar Post</a>
         </li>
 
-         <li class="nav-item">
-          <a class="nav-link" href="{{ route('posts.show', '2') }}">Ficha</a>
-        </li>
     
       </ul>
     </div>

@@ -6,17 +6,18 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
-        Schema::create('usuarios', function (Blueprint $table) {
-            $table->id();
-            $table->string('login');
-            $table->string('password');
+        Schema::create('posts', function (Blueprint $table) {
+            $table->foreignId('usuario_id')->constrained(
+            table: 'usuarios', indexName: 'posts_usuarios_id'
+    );
+            $table->integer('id')->autoIncrement();
+            $table->string('titulo');
+            $table->string('contenido');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
+           
         });
     }
 
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('posts');
     }
 };

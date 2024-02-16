@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Post;
 
 class PostController extends Controller
 {
@@ -11,7 +12,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('posts.index');
+       
+
+       
+        $posts = Post::paginate(4);
+        return view('posts.index', compact('posts'));
     }
 
     /**
@@ -40,7 +45,10 @@ class PostController extends Controller
         
         if($id >= 0 && $id<=9){
 
-            return view('posts.show', compact('id'));
+            $post = Post::findOrFail($id);
+
+
+            return view('posts.show', compact('post'));
         }else{
 
             return view('posts.index');
@@ -70,6 +78,9 @@ class PostController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        //dd($id);
+            Post::findOrFail($id)->delete();
+            $posts = Post::get();
+            return redirect()->route('posts.index');
     }
 }
